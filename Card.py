@@ -463,6 +463,12 @@ class DropLabel(QLabel):
                                 print("Не осталось карточек в колоде")
 
                 else:
+                    #Проверить, что карта перетаскивается на моё поле, а не противника
+                    if self.player == card_params.ENEMY:
+                        event.ignore()
+                        my_move = False
+                        break
+
                     # Обычная обработка перетаскивания карточки на своё поле
                     match deal.card.combat:
                         case card_params.MELEE:
